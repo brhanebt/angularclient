@@ -1,0 +1,28 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #regionForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="region.name"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          required #name="ngModel">
+      </div>
+      <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+      <div class="form-group">
+        <label for="activeCases">Acttive Cases</label>
+        <input type="text" [(ngModel)]="region.activeCases"
+          class="form-control"
+          id="activeCases"
+          name="activeCases"
+          placeholder="Enter ac tive cases"
+          required #activeCases="ngModel">
+        <div [hidden]="!activeCases.pristine" class="alert alert-danger">Active cases is required</div>
+      </div>
+      <button type="submit" [disabled]="!regionForm.form.valid"
+        class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

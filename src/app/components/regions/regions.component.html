@@ -1,0 +1,24 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Region Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Active Cases</th>
+          <th scope="col">Recovered</th>
+          <th scope="col">Country Percentage (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let region of regions">
+          <td>{{ region.id }}</td>
+          <td>{{ region.name }}</td>
+          <td>{{ region.activeCases}}</td>
+          <td>{{ region.recovered }}</td>
+          <td>{{ region.countryPercentage * 100}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

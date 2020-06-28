@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularClient';
+  title = '';
+
+  constructor() {
+    this.title = 'Ethiopia Covid-19 Tracking Application';
+  }
 }
