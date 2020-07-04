@@ -9,6 +9,8 @@ import { RegionService } from 'src/app/services/region.service';
 })
 export class RegionsComponent implements OnInit {
 
+  public componentTitle = 'Ethiopian regions covid-19 distribution tabular view';
+
   regions: Region[];
 
   constructor(private regionService: RegionService) {

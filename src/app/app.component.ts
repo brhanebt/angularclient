@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '';
+  componentTitle = '';
 
   constructor() {
     this.title = 'Ethiopia Covid-19 Tracking Application';

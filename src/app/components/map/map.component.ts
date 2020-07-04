@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {d3} from 'd3';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-map',
@@ -8,7 +8,7 @@ import {d3} from 'd3';
 })
 export class MapComponent implements OnInit {
 
-  public name: string = 'd3';
+  public componentTitle = 'Ethiopian regions covid-19 distribution map view';
 
   // constructor(private userService: UserService) {
   // }
@@ -16,57 +16,48 @@ export class MapComponent implements OnInit {
   public ngOnInit(): void {
 
 
-    let width = 900;
-    let height = 600;
+    const width = 900;
+    const height = 800;
 
-    let projection = d3.geoMercator();
+    const projection = d3.geoMercator().scale(2500).center([38,10]);//.scale(33350).translate([width / 2, height / 2]).center([8.9, 38.8]);
 
-    let svg = d3.select('body').append('svg')
+    const svg = d3.select('#map').append('svg')
       .attr('width', width)
       .attr('height', height);
-    let path = d3.geoPath()
+    const path = d3.geoPath()
       .projection(projection);
-    let g = svg.append('g');
+    const g = svg.append('g');
     g.attr('class', 'map');
 
-    console.log("outside json calling1");
 
-
-    d3.json("https://raw.githubusercontent.com/cszang/dendrobox/master/data/world-110m2.json")
-      // d3.json("https://raw.githubusercontent.com/cszang/dendrobox/5199e47bf6c403a2e9f28bec3b764a2fe23ce359/data/maps.json")
-
-      .then(function (topology) {
-        // <---- Renamed it from data to topology
-        console.log("------>", topology.feature);
+    d3.json('https://raw.githubusercontent.com/brhanebt/angularclient/master/src/assets/regionswgs84.geojson')
+      // tslint:disable-next-line: only-arrow-functions
+      .then(function(json) {
         g.selectAll('path')
-          .data(t.feature(topology, topology.objects.countries).features)
-          //.data(t.feature(topology, topology.objects.countries)
-          //  .geometries)
+          .data(json.features)
           .enter()
           .append('path')
           .attr('d', path);
-        console.log("ending json calling1");
-
       });
 
 
-    d3.json("https://raw.githubusercontent.com/cszang/dendrobox/5199e47bf6c403a2e9f28bec3b764a2fe23ce359/data/maps.json")
-      // d3.json("https://raw.githubusercontent.com/cszang/dendrobox/5199e47bf6c403a2e9f28bec3b764a2fe23ce359/data/maps.json")
+    // d3.json("https://raw.githubusercontent.com/cszang/dendrobox/5199e47bf6c403a2e9f28bec3b764a2fe23ce359/data/maps.json")
+    //   // d3.json("https://raw.githubusercontent.com/cszang/dendrobox/5199e47bf6c403a2e9f28bec3b764a2fe23ce359/data/maps.json")
 
-      .then(function (topology) {
-        // <---- Renamed it from data to topology
-        console.log("------>", topology.feature);
-        g.selectAll('path')
-          .data(t.feature(topology, topology.objects.ne_10m_airports).features)
-          //.data(t.feature(topology, topology.objects.countries)
-          //  .geometries)
-          .enter()
-          .append('path')
-          .attr('d', path)
-          .attr('class', 'airport');
-        console.log("ending json calling1");
+    //   .then(function (topology) {
+    //     // <---- Renamed it from data to topology
+    //     console.log("------>", topology.feature);
+    //     g.selectAll('path')
+    //       .data(t.feature(topology, topology.objects.ne_10m_airports).features)
+    //       //.data(t.feature(topology, topology.objects.countries)
+    //       //  .geometries)
+    //       .enter()
+    //       .append('path')
+    //       .attr('d', path)
+    //       .attr('class', 'airport');
+    //     console.log("ending json calling1");
 
-      });
+    //   });
 
 
 

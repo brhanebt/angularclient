@@ -8,6 +8,8 @@ import { RegionFormComponent } from './components/region-form/region-form.compon
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './components/map/map.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { MapComponent } from './components/map/map.component';
     AppComponent,
     RegionsComponent,
     RegionFormComponent,
-    MapComponent
+    MapComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

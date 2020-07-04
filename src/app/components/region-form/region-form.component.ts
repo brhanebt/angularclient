@@ -9,6 +9,7 @@ import { RegionService } from 'src/app/services/region.service';
   styleUrls: ['./region-form.component.css']
 })
 export class RegionFormComponent {
+  public componentTitle = 'Ethiopian regions covid-19 data entry form';
 
   region: Region;
 
