@@ -21,7 +21,7 @@
     "@angular/router": "~8.2.14",
     "d3": "^5.16.0",
     "d3-geo-projection": "^2.9.0",
-    "datatables.net": "^1.10.21",
+    "datatables.net": "^1.11.3",
     "jquery": "^3.5.1",
     "rxjs": "^6.4.0",
     "rxjs-compat": "^6.5.5",
